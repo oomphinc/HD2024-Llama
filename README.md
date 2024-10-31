@@ -1,0 +1,1 @@
+# This project integrates your GitHub commits to JIRA/Tempo timesheets
