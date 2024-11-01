@@ -9,10 +9,13 @@ const Welcome = () => {
         <nav>
           <ul>
             <li>
-              <a href="#features">Features</a>
+              <a href="#features">Challenge</a>
             </li>
             <li>
-              <a href="#documentation">Documentation</a>
+              <a href="#solution">Solution</a>
+            </li>
+            <li>
+              <a href="#documentation">Key Features</a>
             </li>
             <li>
               <a href="#call-to-action">Get Started</a>
@@ -22,36 +25,24 @@ const Welcome = () => {
       </header>
       <main>
         <section className="hero">
-          <h1>Github Commits to JIRA/Tempo Integration</h1>
-          <p>
-            Streamline your workflow by connecting your GitHub commits to JIRA
-            and Tempo.
-          </p>
-          <button>Get Started</button>
+          <h1>Llama Log, Automate time, amplify productivity.</h1>
+          <p>Revolutionizing time tracking by seamlessly connecting GitHub and Jira Tempo</p>
         </section>
         <section id="features" className="features">
-          <h2>Key Features</h2>
-          <ul>
-            <li>Automatically log GitHub commits in JIRA</li>
-            <li>Track time spent on issues in Tempo</li>
-            <li>Seamless integration with existing workflows</li>
-          </ul>
+          <h2>Challenge</h2>
+          <p>GitHub users often struggle with manual time tracking, leading to inefficiencies and wasted hours. The process is prone to errors, and valuable time is lost searching for projects, tasks and repositories. The Llama team sought to bridge this gap by developing an intuitive tool that integrates Llama AI with Jira Tempo.</p>
+        </section>
+        <section id="solution" className="solution">
+          <h2>Solution</h2>
+          <p>Our React application successfully integrates GitHub commits with JIRA Tempo timesheets, automating the process and reducing errors.</p>
         </section>
         <section id="documentation" className="documentation">
-          <h2>Documentation</h2>
+          <h2>Key Features</h2>
           <ul>
-            <li>Sign up to get access to Llama Log.</li>
-            <li>Add the Llama Log package to your project.</li>
-            <li>
-              Start development and make some commits in the documented format.
-            </li>
-            <li>Push your commits to your repo.</li>
-            <li>Watch your commit messages magically appear in Tempo!</li>
+            <li><p><strong>Effortless Time Tracking</strong> Log hours directly from GitHub.</p></li>
+            <li><p><strong>Smart Task Management</strong> Llama AI generates tasks from commits.</p></li>
+            <li><p><strong>Seamless Integration</strong> Real-time syncing with Jira Tempo.</p></li>
           </ul>
-        </section>
-        <section id="call-to-action" className="call-to-action">
-          <h2>Start integrating today!</h2>
-          <button>Sign Up</button>
         </section>
       </main>
       <footer>
