@@ -1,0 +1,52 @@
+[
+  {
+    "ticket": "SCRUM-1",
+    "time": 30,
+    "message": "Fixed bug in login feature"
+  },
+  {
+    "ticket": "SCRUM-2",
+    "time": 45,
+    "message": "Implemented new search functionality"
+  },
+  {
+    "ticket": "SCRUM-3",
+    "time": 15,
+    "message": "Updated documentation for API endpoints"
+  },
+  {
+    "ticket": "SCRUM-4",
+    "time": 60,
+    "message": "Resolved issue with payment gateway"
+  },
+  {
+    "ticket": "SCRUM-5",
+    "time": 30,
+    "message": "Improved performance of dashboard"
+  },
+  {
+    "ticket": "SCRUM-6",
+    "time": 45,
+    "message": "Added support for multiple languages"
+  },
+  {
+    "ticket": "SCRUM-7",
+    "time": 15,
+    "message": "Fixed typo in error message"
+  },
+  {
+    "ticket": "SCRUM-8",
+    "time": 60,
+    "message": "Developed new reporting feature"
+  },
+  {
+    "ticket": "SCRUM-9",
+    "time": 30,
+    "message": "Enhanced security measures"
+  },
+  {
+    "ticket": "SCRUM-10",
+    "time": 45,
+    "message": "Optimized database queries"
+  }
+]
