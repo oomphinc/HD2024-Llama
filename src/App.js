@@ -9,13 +9,13 @@ function App() {
         <nav>
           <ul>
             <li>
-              <a href="#">Home</a>
+              <a href="#features">Features</a>
             </li>
             <li>
-              <a href="#">Documentation</a>
+              <a href="#documentation">Documentation</a>
             </li>
             <li>
-              <a href="#">Support</a>
+              <a href="#call-to-action">Get Started</a>
             </li>
           </ul>
         </nav>
@@ -29,7 +29,7 @@ function App() {
           </p>
           <button>Get Started</button>
         </section>
-        <section className="features">
+        <section id="features" className="features">
           <h2>Key Features</h2>
           <ul>
             <li>Automatically log GitHub commits in JIRA</li>
@@ -37,7 +37,15 @@ function App() {
             <li>Seamless integration with existing workflows</li>
           </ul>
         </section>
-        <section className="call-to-action">
+        <section id="documentation" className="documentation">
+          <h2>Documentation</h2>
+          <ul>
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+          </ul>
+        </section>
+        <section id="call-to-action" className="call-to-action">
           <h2>Start integrating today!</h2>
           <button>Sign Up</button>
         </section>
@@ -45,7 +53,7 @@ function App() {
       <footer>
         <p>
           &copy; 2024 Github Commits to JIRA/Tempo Integration.{" "}
-          <a href="https://www.oomphinc.com/" target="_blank">
+          <a href="https://www.oomphinc.com/" target="_blank" rel="noreferrer">
             Oomph, Inc.
           </a>
         </p>
