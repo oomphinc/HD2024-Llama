@@ -24,7 +24,6 @@ function App() {
         (commit) => commit.commit.message
       );
 
-      console.log("commitMessages", commitMessages);
       const parsedCommits = parseCommits(commitMessages);
       await pushToJiraTempo(parsedCommits);
       setLoading(false);
