@@ -20,6 +20,9 @@ const Welcome = () => {
             <li>
               <a href="#call-to-action">Get Started</a>
             </li>
+            <li>
+              <a href="#post">Technichal Solution Post</a>
+            </li>
           </ul>
         </nav>
       </header>
@@ -79,6 +82,10 @@ const Welcome = () => {
               </p>
             </li>
           </ul>
+        </section>
+        <section id="post" className="post">
+          <h2>Technichal Solution</h2>
+          <p><a href="https://docs.google.com/document/d/1Huw85Njwlk28GV3V2Hnw9bbKI11icwCgHcmm8FJM3Ls/edit?tab=t.e96he0jwsler#heading=h.t0vflei4dsr">Read the technichal solution post (word document)</a></p>
         </section>
       </main>
       <footer>
