@@ -50,16 +50,8 @@ const Welcome = () => {
             Our React application successfully integrates GitHub commits with
             JIRA Tempo timesheets, automating the process and reducing errors.
           </p>
-          <ul>
-            <li>Sign up to get access to Llama Log.</li>
-            <li>Add the Llama Log package to your project.</li>
-            <li>
-              Start development and make some commits in the documented format.
-            </li>
-            <li>Push your commits to your repo.</li>
-            <li>Watch your commit messages magically appear in Tempo!</li>
-          </ul>
         </section>
+
         <section id="documentation" className="documentation">
           <h2>Key Features</h2>
           <ul>
@@ -85,7 +77,26 @@ const Welcome = () => {
         </section>
         <section id="post" className="post">
           <h2>Technichal Solution</h2>
-          <p><a href="https://docs.google.com/document/d/1Huw85Njwlk28GV3V2Hnw9bbKI11icwCgHcmm8FJM3Ls/edit?tab=t.e96he0jwsler#heading=h.t0vflei4dsr">Read the technichal solution post (word document)</a></p>
+          <p>
+            <a href="https://docs.google.com/document/d/1Huw85Njwlk28GV3V2Hnw9bbKI11icwCgHcmm8FJM3Ls/edit?tab=t.e96he0jwsler#heading=h.t0vflei4dsr">
+              Read the technichal solution post (word document)
+            </a>
+          </p>
+        </section>
+        <section>
+          <div className="call-to-action">
+            <h2>Next Steps</h2>
+            <ul>
+              <li>Sign up to get access to Llama Log.</li>
+              <li>Add the Llama Log package to your project.</li>
+              <li>
+                Start development and make some commits in the documented
+                format.
+              </li>
+              <li>Push your commits to your repo.</li>
+              <li>Watch your commit messages magically appear in Tempo!</li>
+            </ul>
+          </div>
         </section>
       </main>
       <footer>
