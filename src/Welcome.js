@@ -40,9 +40,13 @@ const Welcome = () => {
         <section id="documentation" className="documentation">
           <h2>Documentation</h2>
           <ul>
-            <li>One</li>
-            <li>Two</li>
-            <li>Three</li>
+            <li>Sign up to get access to Llama Log.</li>
+            <li>Add the Llama Log package to your project.</li>
+            <li>
+              Start development and make some commits in the documented format.
+            </li>
+            <li>Push your commits to your repo.</li>
+            <li>Watch your commit messages magically appear in Tempo!</li>
           </ul>
         </section>
         <section id="call-to-action" className="call-to-action">
