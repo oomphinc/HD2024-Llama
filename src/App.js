@@ -2,71 +2,86 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
-  const [githubToken, setGithubToken] = useState("");
-  const [jiraDomain, setJiraDomain] = useState("");
-  const [jiraUsername, setJiraUsername] = useState("");
-  const [jiraPassword, setJiraPassword] = useState("");
+  const [commits, setCommits] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Load config from backend
-    axios
-      .get("/config")
-      .then((response) => {
-        setGithubToken(response.data.githubToken);
-        setJiraDomain(response.data.jiraDomain);
-        setJiraUsername(response.data.jiraUsername);
-        setJiraPassword(response.data.jiraPassword);
-      })
-      .catch((error) => {
-        console.error("Error loading config:", error.message);
-      });
+    fetchCommits();
   }, []);
 
-  const handleWebhook = (event) => {
-    // Forward webhook to backend
-    axios
-      .post("/github-webhook", event)
-      .then((response) => {
-        console.log("Webhook forwarded");
-      })
-      .catch((error) => {
-        console.error("Error forwarding webhook:", error.message);
-      });
+  const fetchCommits = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(
+        `https://api.github.com/repos/oomphinc/HD2024-Llama/commits`,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`,
+          },
+        }
+      );
+      const commitMessages = response.data.map(
+        (commit) => commit.commit.message
+      );
+      const parsedCommits = parseCommits(commitMessages);
+      await pushToJiraTempo(parsedCommits);
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+    }
+  };
+
+  const parseCommits = (commitMessages) => {
+    const parsedCommits = [];
+    commitMessages.forEach((message) => {
+      const match = message.match(/\[(\w+)\],\[(\d+)\],\[(.*)\]/);
+      if (match) {
+        parsedCommits.push({
+          ticket: match[1],
+          time: match[2],
+          message: match[3],
+        });
+      }
+    });
+    return parsedCommits;
+  };
+
+  const pushToJiraTempo = async (parsedCommits) => {
+    parsedCommits.forEach((commit) => {
+      axios.post(
+        `${process.env.REACT_APP_JIRA_INSTANCE_URL}/rest/tempo-timesheets/3/worklog`,
+        {
+          issueKey: commit.ticket,
+          timeSpentSeconds: commit.time * 60,
+          comment: commit.message,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_JIRA_TEMP_TOKEN}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    });
   };
 
   return (
     <div>
-      <h1>Github to JIRA Tempo Integration</h1>
-      <form>
-        <label>Github Token:</label>
-        <input
-          type="text"
-          value={githubToken}
-          onChange={(e) => setGithubToken(e.target.value)}
-        />
-        <br />
-        <label>JIRA Domain:</label>
-        <input
-          type="text"
-          value={jiraDomain}
-          onChange={(e) => setJiraDomain(e.target.value)}
-        />
-        <br />
-        <label>JIRA Username:</label>
-        <input
-          type="text"
-          value={jiraUsername}
-          onChange={(e) => setJiraUsername(e.target.value)}
-        />
-        <br />
-        <label>JIRA Password:</label>
-        <input
-          type="password"
-          value={jiraPassword}
-          onChange={(e) => setJiraPassword(e.target.value)}
-        />
-      </form>
-      <button onClick={handleWebhook}>Test Webhook</button>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <ul>
+          {commits.map((commit, index) => (
+            <li key={index}>
+              <p>
+                Ticket: {commit.ticket}, Time: {commit.time} minutes, Message:{" "}
+                {commit.message}
+              </p>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

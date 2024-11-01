@@ -1,6 +1,6 @@
 module.exports = {
   githubToken: "your-github-token",
-  jiraDomain: "your-jira-domain",
-  jiraUsername: "your-jira-username",
-  jiraPassword: "your-jira-password",
+  jiraDomain: "llamalogai.atlassian.net",
+  jiraUsername: "llamalogAI@gmail.com",
+  jiraPassword: "notaC@ME12",
 };
