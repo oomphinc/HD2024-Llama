@@ -50,21 +50,27 @@ function App() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <ul>
-          {parsedCommits.map(
-            (
-              commit,
-              index // Use parsedCommits state variable
-            ) => (
-              <li key={index}>
-                <p>
-                  Ticket: {commit.ticket}, Time: {commit.time} minutes, Message:{" "}
-                  {commit.message}
-                </p>
-              </li>
-            )
-          )}
-        </ul>
+        <div className="results">
+          <h3>
+            And so everyone can see that we are actually doing something with
+            Github commits...
+          </h3>
+          <ul>
+            {parsedCommits.map(
+              (
+                commit,
+                index // Use parsedCommits state variable
+              ) => (
+                <li key={index}>
+                  <p>
+                    Ticket: {commit.ticket}, Time: {commit.time} minutes,
+                    Message: {commit.message}
+                  </p>
+                </li>
+              )
+            )}
+          </ul>
+        </div>
       )}
     </div>
   );
