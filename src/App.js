@@ -1,9 +1,11 @@
 import "./App.css";
+import logo from "./MainLogo.jpg";
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <header>
+        <img src={logo} className="app__logo" alt="logo" />
         <nav>
           <ul>
             <li>
@@ -19,7 +21,7 @@ function App() {
         </nav>
       </header>
       <main>
-        <section class="hero">
+        <section className="hero">
           <h1>Github Commits to JIRA/Tempo Integration</h1>
           <p>
             Streamline your workflow by connecting your GitHub commits to JIRA
@@ -27,7 +29,7 @@ function App() {
           </p>
           <button>Get Started</button>
         </section>
-        <section class="features">
+        <section className="features">
           <h2>Key Features</h2>
           <ul>
             <li>Automatically log GitHub commits in JIRA</li>
@@ -35,7 +37,7 @@ function App() {
             <li>Seamless integration with existing workflows</li>
           </ul>
         </section>
-        <section class="call-to-action">
+        <section className="call-to-action">
           <h2>Start integrating today!</h2>
           <button>Sign Up</button>
         </section>
