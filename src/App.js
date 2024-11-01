@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useCallback } from "react";
 
 function App() {
-  const [commits, setCommits] = useState([]);
   const [parsedCommits, setParsedCommits] = useState([]); // New state variable
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    fetchCommits();
-  }, []);
-
-  const fetchCommits = async () => {
+  const fetchCommits = useCallback(async () => {
     setLoading(true);
     try {
       const response = await axios.get(
@@ -27,7 +23,11 @@ function App() {
       console.error(error);
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchCommits();
+  }, [fetchCommits]);
 
   const parseCommits = (commitMessages) => {
     const parsedCommits = [];
