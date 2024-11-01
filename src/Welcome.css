@@ -130,3 +130,8 @@ footer a {
 footer a:hover {
   color: #00658f; /* darker version of the main color */
 }
+
+.post,
+.solution {
+  background-color: #f0f0f0;
+}
