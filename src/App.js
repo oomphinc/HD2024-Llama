@@ -13,16 +13,18 @@ function App() {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://api.github.com/repos/oomphinc/HD2024-Llama/commits`,
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`,
-          },
-        }
+        `https://api.github.com/repos/oomphinc/HD2024-Llama/commits`
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`,
+        //   },
+        // }
       );
       const commitMessages = response.data.map(
         (commit) => commit.commit.message
       );
+
+      console.log("commitMessages", commitMessages);
       const parsedCommits = parseCommits(commitMessages);
       await pushToJiraTempo(parsedCommits);
       setLoading(false);
@@ -44,6 +46,7 @@ function App() {
         });
       }
     });
+
     return parsedCommits;
   };
 
