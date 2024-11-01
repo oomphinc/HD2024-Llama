@@ -1,63 +1,72 @@
-import "./App.css";
-import logo from "./MainLogo.jpg";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function App() {
+  const [githubToken, setGithubToken] = useState("");
+  const [jiraDomain, setJiraDomain] = useState("");
+  const [jiraUsername, setJiraUsername] = useState("");
+  const [jiraPassword, setJiraPassword] = useState("");
+
+  useEffect(() => {
+    // Load config from backend
+    axios
+      .get("/config")
+      .then((response) => {
+        setGithubToken(response.data.githubToken);
+        setJiraDomain(response.data.jiraDomain);
+        setJiraUsername(response.data.jiraUsername);
+        setJiraPassword(response.data.jiraPassword);
+      })
+      .catch((error) => {
+        console.error("Error loading config:", error.message);
+      });
+  }, []);
+
+  const handleWebhook = (event) => {
+    // Forward webhook to backend
+    axios
+      .post("/github-webhook", event)
+      .then((response) => {
+        console.log("Webhook forwarded");
+      })
+      .catch((error) => {
+        console.error("Error forwarding webhook:", error.message);
+      });
+  };
+
   return (
-    <div className="app">
-      <header>
-        <img src={logo} className="app__logo" alt="logo" />
-        <nav>
-          <ul>
-            <li>
-              <a href="#features">Features</a>
-            </li>
-            <li>
-              <a href="#documentation">Documentation</a>
-            </li>
-            <li>
-              <a href="#call-to-action">Get Started</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <main>
-        <section className="hero">
-          <h1>Github Commits to JIRA/Tempo Integration</h1>
-          <p>
-            Streamline your workflow by connecting your GitHub commits to JIRA
-            and Tempo.
-          </p>
-          <button>Get Started</button>
-        </section>
-        <section id="features" className="features">
-          <h2>Key Features</h2>
-          <ul>
-            <li>Automatically log GitHub commits in JIRA</li>
-            <li>Track time spent on issues in Tempo</li>
-            <li>Seamless integration with existing workflows</li>
-          </ul>
-        </section>
-        <section id="documentation" className="documentation">
-          <h2>Documentation</h2>
-          <ul>
-            <li>One</li>
-            <li>Two</li>
-            <li>Three</li>
-          </ul>
-        </section>
-        <section id="call-to-action" className="call-to-action">
-          <h2>Start integrating today!</h2>
-          <button>Sign Up</button>
-        </section>
-      </main>
-      <footer>
-        <p>
-          &copy; 2024 Github Commits to JIRA/Tempo Integration.{" "}
-          <a href="https://www.oomphinc.com/" target="_blank" rel="noreferrer">
-            Oomph, Inc.
-          </a>
-        </p>
-      </footer>
+    <div>
+      <h1>Github to JIRA Tempo Integration</h1>
+      <form>
+        <label>Github Token:</label>
+        <input
+          type="text"
+          value={githubToken}
+          onChange={(e) => setGithubToken(e.target.value)}
+        />
+        <br />
+        <label>JIRA Domain:</label>
+        <input
+          type="text"
+          value={jiraDomain}
+          onChange={(e) => setJiraDomain(e.target.value)}
+        />
+        <br />
+        <label>JIRA Username:</label>
+        <input
+          type="text"
+          value={jiraUsername}
+          onChange={(e) => setJiraUsername(e.target.value)}
+        />
+        <br />
+        <label>JIRA Password:</label>
+        <input
+          type="password"
+          value={jiraPassword}
+          onChange={(e) => setJiraPassword(e.target.value)}
+        />
+      </form>
+      <button onClick={handleWebhook}>Test Webhook</button>
     </div>
   );
 }
